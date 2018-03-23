@@ -23,20 +23,3 @@ def IOU(boxA, boxB):
 	# return the intersection over union value
 	return iou
 
-def video_to_frame(videofile_path):
-	import cv2
-	import os
-
-	dirname = videofile_path.split('/')[-1].split(".")[0]
-	if(!os.path.isdir(dirname)):
-		mkdir(dirname)
-	vidcap = cv2.VideoCapture(videofile_path)
-	success,image = vidcap.read()
-	print(success,image)
-	count = 0
-	success = True
-	while success:
-	  success,image = vidcap.read()
-	  print('Read a new frame: ', success)
-	  cv2.imwrite(os.path.join(dirname, "frame%d.jpg" % count), image)
-	  count += 1
